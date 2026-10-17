@@ -1043,18 +1043,645 @@
     background: #eff6ff;
     border-color: #93c5fd;
   }
+
+  /* --- COIN BURST & ATMOSPHERIC ANIMATIONS --- */
+  .coin-burst-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+  }
+
+  .burst-coin {
+    position: absolute;
+    font-size: 2.2rem;
+    user-select: none;
+    animation: coinFly 0.85s cubic-bezier(0.15, 0.85, 0.35, 1) forwards;
+    filter: drop-shadow(0 4px 10px rgba(245, 158, 11, 0.6));
+  }
+
+  @keyframes coinFly {
+    0% {
+      opacity: 1;
+      transform: translate(0, 0) scale(0.6) rotate(0deg);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(var(--dx), var(--dy)) scale(1.35) rotate(180deg);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(var(--dx), calc(var(--dy) + 40px)) scale(0.85) rotate(360deg);
+    }
+  }
+
+  /* Hot item steam badge & animation */
+  .food-btn {
+    position: relative;
+  }
+
+  .steam-badge {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 0.95rem;
+    animation: steamWisp 1.8s ease-in-out infinite;
+    filter: drop-shadow(0 0 3px rgba(239, 68, 68, 0.5));
+  }
+
+  @keyframes steamWisp {
+    0%, 100% { transform: translateY(0) scale(0.95); opacity: 0.7; }
+    50% { transform: translateY(-4px) scale(1.2); opacity: 1; }
+  }
+
+  /* Drop in animation for items onto tray */
+  .tray-pill {
+    animation: dropIn 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  @keyframes dropIn {
+    0% { transform: scale(0.5) translateY(-14px); opacity: 0; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
+  }
+
+  /* Customer Avatar Animations */
+  .customer-arrive {
+    animation: custSlide 0.35s ease-out forwards;
+  }
+
+  @keyframes custSlide {
+    0% { opacity: 0; transform: translateX(-22px) scale(0.92); }
+    100% { opacity: 1; transform: translateX(0) scale(1); }
+  }
+
+  .customer-impatient {
+    animation: impatientShake 0.6s ease-in-out infinite !important;
+  }
+
+  @keyframes impatientShake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg) translateY(-2px); }
+    75% { transform: rotate(5deg) translateY(-2px); }
+  }
+
+  .customer-celebrate {
+    animation: cheerBounce 0.6s ease-in-out forwards !important;
+  }
+
+  @keyframes cheerBounce {
+    0%, 100% { transform: scale(1); }
+    30% { transform: scale(1.3) translateY(-10px); }
+    60% { transform: scale(1.1) translateY(0); }
+  }
+
+  /* Streak flame pulse */
+  .streak-pill.streak-hot {
+    background: linear-gradient(135deg, #f97316 0%, #dc2626 100%);
+    color: #fff;
+    box-shadow: 0 0 14px rgba(239, 68, 68, 0.6);
+    animation: pulseFlame 1s ease-in-out infinite;
+  }
+
+  @keyframes pulseFlame {
+    0%, 100% { transform: scale(1); filter: brightness(1); }
+    50% { transform: scale(1.1); filter: brightness(1.25); }
+  }
+
+  /* Expanded Grammar Chips */
+  .g-chip.pl-es { background: #fef08a; color: #854d0e; border: 1px solid #facc15; }
+  .g-chip.pl-ies { background: #fed7aa; color: #9a3412; border: 1px solid #fb923c; }
+  .g-chip.prep { background: #e0e7ff; color: #3730a3; border: 1px solid #a5b4fc; }
+  .g-chip.quant { background: #ccfbf1; color: #115e59; border: 1px solid #5eead4; }
+  .g-chip.someany { background: #fae8ff; color: #86198f; border: 1px solid #f0abfc; }
+
+  /* Glossary Tabs & Dictionary styling */
+  .glossary-nav-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+    border-bottom: 2px solid #e2d5be;
+    padding-bottom: 10px;
+  }
+
+  .glossary-tab-pane {
+    animation: fadeIn 0.2s ease;
+  }
+
+  .glossary-dict-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.88rem;
+  }
+
+  .glossary-dict-table th {
+    background: #f1f5f9;
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 2px solid #cbd5e1;
+    color: #334155;
+  }
+
+  .glossary-dict-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #e2e8f0;
+    vertical-align: top;
+  }
+
+  .grammar-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+    margin-top: 10px;
+  }
+
+  .grammar-tip-card {
+    background: #fff;
+    border: 2px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 0.86rem;
+    line-height: 1.4;
+  }
+
+  .grammar-tip-card h5 {
+    font-size: 0.96rem;
+    color: var(--pub-green);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* --- FEATURES B & D: COIN DRAWER & ATMOSPHERIC VISUALS --- */
+  
+  /* --- CHRISTMAS THEME (JULESTEMNING) STYLING --- */
+  .snow-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 999;
+    display: none;
+  }
+  body.xmas-mode .snow-canvas {
+    display: block;
+  }
+
+  body.xmas-mode .awning {
+    background: repeating-linear-gradient(
+      90deg,
+      #991b1b 0px,
+      #991b1b 45px,
+      #166534 45px,
+      #166534 90px
+    );
+    border-bottom: 4px solid #f59e0b;
+  }
+
+  .awning-lights {
+    display: none;
+    position: relative;
+    top: -5px;
+    height: 10px;
+    z-index: 55;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  body.xmas-mode .awning-lights {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 10px;
+  }
+  .xmas-bulb {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    animation: bulbTwinkle 1.6s infinite alternate ease-in-out;
+  }
+  .xmas-bulb:nth-child(2n) { animation-delay: 0.4s; }
+  .xmas-bulb:nth-child(3n) { animation-delay: 0.8s; }
+  .xmas-bulb:nth-child(4n) { animation-delay: 1.2s; }
+  @keyframes bulbTwinkle {
+    0% { opacity: 0.3; transform: scale(0.85); }
+    100% { opacity: 1; transform: scale(1.25); filter: drop-shadow(0 0 5px currentColor); }
+  }
+
+  .btn-top.xmas-active {
+    background: linear-gradient(135deg, #b91c1c 0%, #7f1d1d 100%);
+    border-color: #fca5a5;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(220, 38, 38, 0.45);
+  }
+
+  .customer-santa-hat {
+    display: none;
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    margin-left: 10px;
+    font-size: 1.85rem;
+    transform: rotate(18deg);
+    pointer-events: none;
+    z-index: 5;
+    animation: santaHatWiggle 2.5s ease-in-out infinite alternate;
+  }
+  @keyframes santaHatWiggle {
+    0% { transform: rotate(12deg) scale(0.96); }
+    100% { transform: rotate(22deg) scale(1.05); }
+  }
+  body.xmas-mode .customer-santa-hat {
+    display: block;
+  }
+
+  body.xmas-mode .xmas-brand-decor {
+    display: inline !important;
+  }
+  body.xmas-mode .xmas-hero-decor {
+    display: inline !important;
+  }
+  body.xmas-mode .xmas-menu-sub {
+    display: block !important;
+  }
+
+  /* Segmented grade pill group in topbar */
+  .grade-pill-group {
+    display: inline-flex;
+    background: rgba(0, 0, 0, 0.32);
+    padding: 3px;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    gap: 3px;
+    align-items: center;
+  }
+  .grade-pill-btn {
+    border-radius: 18px !important;
+    padding: 5px 12px !important;
+    font-size: 0.8rem !important;
+    border: none !important;
+    background: transparent !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-weight: 700 !important;
+  }
+  .grade-pill-btn:hover {
+    background: rgba(255, 255, 255, 0.18) !important;
+    color: #fff !important;
+  }
+  .grade-pill-btn.active-grade-pill {
+    font-weight: 800 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.28);
+  }
+  .grade-pill-btn.active-grade-pill#btnTopG6 { color: #14532d !important; background: #bbf7d0 !important; }
+  .grade-pill-btn.active-grade-pill#btnTopG7 { color: #1e3a8a !important; background: #bfdbfe !important; }
+  .grade-pill-btn.active-grade-pill#btnTopG8 { color: #581c87 !important; background: #f3e8ff !important; }
+
+  /* Compact hero bar on start menu */
+  .hero-compact-bar {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  .hero-lk20-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border: 2px solid #cbd5e1;
+    border-radius: 20px;
+    padding: 8px 18px;
+    font-size: 0.92rem;
+    color: #334155;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    line-height: 1.4;
+    text-align: center;
+  }
+  .hero-lk20-pill strong {
+    color: var(--pub-green);
+  }
+
+
+  /* Rich wood & brass accents */
+  .topbar {
+    background: linear-gradient(180deg, #3d2213 0%, #29160c 100%);
+    border-bottom: 3px solid var(--pub-gold);
+  }
+  .customer-stage {
+    background: linear-gradient(180deg, #fffcf7 0%, #f6ecdc 100%);
+    border: 3px solid #4a2814;
+    box-shadow: 0 6px 18px rgba(62, 36, 21, 0.12);
+    position: relative;
+  }
+
+  /* Speech bubble tail pointing towards customer */
+  .speech-bubble {
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  }
+  @media (min-width: 641px) {
+    .speech-bubble::before {
+      content: '';
+      position: absolute;
+      left: -12px;
+      top: 26px;
+      width: 0;
+      height: 0;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-right: 12px solid var(--pub-wood);
+    }
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      left: -9px;
+      top: 27px;
+      width: 0;
+      height: 0;
+      border-top: 9px solid transparent;
+      border-bottom: 9px solid transparent;
+      border-right: 10px solid #fff;
+    }
+  }
+
+  /* Customer reaction tag */
+  .customer-avatar-box {
+    position: relative;
+  }
+  .cust-reaction-tag {
+    position: absolute;
+    top: -14px;
+    background: #15803d;
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.76rem;
+    padding: 3px 9px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.22);
+    animation: popReaction 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    white-space: nowrap;
+    z-index: 10;
+  }
+  .cust-reaction-tag.confused {
+    background: #dc2626;
+  }
+  @keyframes popReaction {
+    0% { transform: scale(0.4) translateY(8px); opacity: 0; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
+  }
+
+  .customer-confused {
+    animation: headShake 0.45s ease-in-out !important;
+  }
+  @keyframes headShake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-6px) rotate(-4deg); }
+    40% { transform: translateX(6px) rotate(4deg); }
+    60% { transform: translateX(-4px) rotate(-2deg); }
+    80% { transform: translateX(4px) rotate(2deg); }
+  }
+
+
+  /* Till Mode Switch & Interactive Cash Drawer */
+  .till-mode-switch {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .btn-till-tab {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 2px solid #cbd5e1;
+    background: #fff;
+    font-weight: 800;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: all 0.15s;
+    color: #334155;
+  }
+  .btn-till-tab.active {
+    background: var(--pub-green);
+    color: #fff;
+    border-color: var(--pub-green-dark);
+  }
+
+  .cash-drawer-box {
+    background: #fbf8f2;
+    border: 2px solid var(--pub-wood);
+    border-radius: 14px;
+    padding: 14px;
+    margin-top: 6px;
+  }
+  .drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--pub-wood);
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .bonus-tag {
+    background: #dcfce7;
+    color: #15803d;
+    border: 1px solid #86efac;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.78rem;
+    font-weight: 800;
+  }
+  .cash-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+    justify-content: center;
+  }
+
+  /* Banknotes styling */
+  .cash-note {
+    border-radius: 8px;
+    padding: 7px 12px;
+    border: 2px solid;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px;
+    transition: transform 0.12s, box-shadow 0.12s;
+    user-select: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  .cash-note:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+  }
+  .note-20 {
+    background: #faf5ff;
+    border-color: #9333ea;
+    color: #581c87;
+  }
+  .note-10 {
+    background: #fff7ed;
+    border-color: #ea580c;
+    color: #9a3412;
+  }
+  .note-5 {
+    background: #eff6ff;
+    border-color: #2563eb;
+    color: #1e40af;
+  }
+  .note-bank { font-size: 0.62rem; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px; opacity: 0.85; }
+  .note-val { font-size: 1.25rem; font-weight: 900; font-family: Georgia, serif; line-height: 1.1; }
+  .note-desc { font-size: 0.7rem; font-weight: 700; opacity: 0.85; }
+
+  /* Coins styling */
+  .cash-coin {
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.12s, box-shadow 0.12s;
+    user-select: none;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    border: 2px solid;
+    text-align: center;
+  }
+  .cash-coin:hover {
+    transform: translateY(-2px) scale(1.06);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.22);
+  }
+  .coin-2 {
+    width: 66px;
+    height: 66px;
+    background: radial-gradient(circle, #e2e8f0 45%, #fef08a 48%, #eab308 100%);
+    border-color: #ca8a04;
+    color: #713f12;
+  }
+  .coin-1 {
+    width: 58px;
+    height: 58px;
+    background: radial-gradient(circle, #fef9c3 30%, #eab308 100%);
+    border-color: #a16207;
+    color: #713f12;
+  }
+  .coin-50p {
+    width: 62px;
+    height: 62px;
+    background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
+    border-color: #64748b;
+    color: #1e293b;
+    clip-path: polygon(50% 0%, 90% 20%, 100% 65%, 75% 100%, 25% 100%, 0% 65%, 10% 20%);
+  }
+  .coin-20p {
+    width: 52px;
+    height: 52px;
+    background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
+    border-color: #64748b;
+    color: #1e293b;
+    clip-path: polygon(50% 0%, 90% 20%, 100% 65%, 75% 100%, 25% 100%, 0% 65%, 10% 20%);
+  }
+  .coin-10p {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+    border-color: #94a3b8;
+    color: #334155;
+  }
+  .coin-val { font-size: 1.05rem; font-weight: 900; line-height: 1; }
+  .coin-desc { font-size: 0.58rem; font-weight: 700; opacity: 0.85; }
+
+  /* Counted tray in till */
+  .counted-tray-container {
+    background: #fff;
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin: 10px 0;
+  }
+  .counted-tray-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #475569;
+    margin-bottom: 6px;
+  }
+  .counted-amount-text {
+    font-size: 1.35rem;
+    color: var(--pub-green);
+    font-family: Georgia, serif;
+    font-weight: 900;
+  }
+  .counted-coins-surface {
+    min-height: 52px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+  }
+  .counted-chip {
+    background: #f1f5f9;
+    border: 1px solid #94a3b8;
+    border-radius: 16px;
+    padding: 3px 9px;
+    font-size: 0.82rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: background 0.12s;
+  }
+  .counted-chip:hover {
+    background: #fee2e2;
+    border-color: #ef4444;
+    color: #991b1b;
+  }
+  .counted-spoken-words {
+    font-size: 0.85rem;
+    color: #1e3a8a;
+    font-style: italic;
+    margin-top: 4px;
+  }
+  .cash-drawer-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
 </style>
 </head>
 <body>
 
 <div class="awning"></div>
+<div id="awningLights" class="awning-lights"></div>
+<canvas id="snowCanvas" class="snow-canvas"></canvas>
+<div id="coinBurstContainer" class="coin-burst-container"></div>
 
 <header class="topbar">
   <div class="brand" onclick="showMenu()">
-    <span>🐟 London Pub Panic! 🇬🇧</span>
+    <span>🍺 The Crown &amp; Tea 🇬🇧<span class="xmas-brand-decor" style="display:none;"> 🎄❄️</span> • London Pub Panic!</span>
   </div>
   <div class="top-controls">
-    <button class="btn-top grade-pill" id="btnTopGrade" onclick="cycleGrade()" title="Klikk for å bytte mellom 6., 7. og 8. trinn">🎯 Trinn: 8. trinn</button>
+    <div class="grade-pill-group" title="Velg klassetrinn (LK20)">
+      <button class="grade-pill-btn" id="btnTopG6" onclick="selectGrade(6)">🟢 6. trinn</button>
+      <button class="grade-pill-btn" id="btnTopG7" onclick="selectGrade(7)">🔵 7. trinn</button>
+      <button class="grade-pill-btn active-grade-pill" id="btnTopG8" onclick="selectGrade(8)">🟣 8. trinn</button>
+    </div>
+    <button class="btn-top" id="btnXmas" onclick="toggleXmasMode()" title="Skru av eller på koselig julestemning i puben">🎄 Jul: PÅ</button>
     <button class="btn-top" id="btnWhiteboard" onclick="toggleWhiteboardMode()">👨‍🏫 Tavlemodus: AV</button>
     <button class="btn-top" id="btnListening" onclick="toggleListeningMode()" title="Skjul bestillingsteksten slik at elevene må lytte">🎧 Lyttemodus: AV</button>
     <button class="btn-top" id="btnCalm" onclick="toggleCalmMode()">🧘 Rolig modus: AV</button>
@@ -1070,77 +1697,40 @@
 
   <!-- START MENU SCREEN -->
   <section id="screenMenu" class="screen active">
-    <div class="hero-card">
-      <h1 class="hero-title">Welcome to The Crown &amp; Tea! 🇬🇧</h1>
-      <p class="hero-sub">
-        Engelskspill tilpasset LK20-kompetansemål for <strong>6. trinn, 7. trinn og 8. trinn</strong>! Velg klassetrinn under, så tilpasses ordforråd, setningsstruktur, priser og kassaapparat automatisk.
-      </p>
-
-      <!-- GRADE & LK20 COMPETENCE SELECTOR -->
-      <div class="grade-selector-box">
-        <div class="grade-selector-header">
-          <span>🎯 1. Velg klassetrinn og kompetansemål (LK20):</span>
-          <span style="font-size: 0.82rem; font-family: sans-serif; color: #64748b;">Klikk på et trinn for å tilpasse hele spillet</span>
-        </div>
-
-        <div class="grade-tabs">
-          <div class="grade-tab" id="tabGrade6" onclick="selectGrade(6)">
-            <span class="grade-tab-badge g6-badge">🟢 6. Trinn • Mellomtrinnet</span>
-            <h3>Høflighet, <em>a / an</em> &amp; Hele pund</h3>
-            <p>Korte, tydelige bestillinger. Øv på <em>a / an</em>, regelrett flertall (<em>two, three</em>), enkel nektelse (<em>no..., please</em>) og hele pund (£1–£15).</p>
-          </div>
-
-          <div class="grade-tab" id="tabGrade7" onclick="selectGrade(7)">
-            <span class="grade-tab-badge g7-badge">🔵 7. Trinn • Overgang</span>
-            <h3>Mengdeord, <em>without</em> &amp; Pence</h3>
-            <p>Utellelige uttrykk (<em>a cup of tea, a slice of pie, a portion of...</em>), flertall på <em>-ies</em>, høflig svar før kassen og halve pund (£4.50).</p>
-          </div>
-
-          <div class="grade-tab active-grade" id="tabGrade8" onclick="selectGrade(8)">
-            <span class="grade-tab-badge g8-badge">🟣 8. Trinn • Ungdomstrinnet</span>
-            <h3>UK vs. US, Idiomer &amp; Vekslepenger</h3>
-            <p>Amerikanske turister (<em>cookie, french fries, potato chips</em>), spontane ombestemmelser (<em>skip the / hold the</em>) og vekslepenger fra £10/£20.</p>
-          </div>
-        </div>
-
-        <div class="lk20-info-banner" id="lk20Description"></div>
+    <div class="hero-card" style="padding: 16px 20px; margin-bottom: 16px;">
+      <h1 class="hero-title" style="font-size: 1.85rem; margin-bottom: 2px;">Welcome to The Crown &amp; Tea! 🇬🇧<span class="xmas-hero-decor" style="display:none;"> 🎄✨</span></h1>
+      <div class="xmas-menu-sub" style="display:none; font-size:0.92rem; color:#b91c1c; font-weight:700; margin-bottom:6px;">
+        🎅 God førjulstid! Koselig julepub i London med snøfall og julehilsener
       </div>
-
-      <!-- WHITEBOARD BANNER -->
-      <div class="whiteboard-hero-banner">
-        <div class="whiteboard-hero-text">
-          <h3>👨‍🏫 Tavlemodus – Felles gjennomgang på storskjerm</h3>
-          <p>
-            Ingen tidsfrist, ekstra stor skrift og grammatisk nedbrytning tilpasset trinnet du har valgt. Du kan bytte mellom 6., 7. og 8. trinn direkte på tavla!
-          </p>
-        </div>
-        <button class="btn-start-whiteboard" onclick="startWhiteboardSession()">
-          👨‍🏫 Start Tavlemodus ➔
-        </button>
-      </div>
-
-      <h2 class="mode-section-title">🏆 2. Konkurransemoduser (Tilpasset valgt trinn)</h2>
-      <div class="mode-grid">
-        <div class="mode-card comp" onclick="startGame('rush')">
-          <div>
-            <span class="mode-badge badge-comp">🔥 Mest populær</span>
-            <h3>London Rush Hour</h3>
-            <p>Du har <strong>3 liv (❤️❤️❤️)</strong>. Bestillingene følger kompetansemålene for valgt trinn og øker gradvis fra Nivå 1 til Nivå 3.</p>
-          </div>
-          <button class="mode-start-btn" id="btnRushText">Start Rush Hour (8. trinn) ➔</button>
-        </div>
-
-        <div class="mode-card comp" onclick="startGame('sprint')">
-          <div>
-            <span class="mode-badge badge-comp">⚡ Fellesstart i klassen</span>
-            <h3>2-Minute Class Challenge</h3>
-            <p>Alle har nøyaktig <strong>120 sekunder</strong>! Ekspeder så mange kunder du klarer på ditt klassetrinn før klokka ringer.</p>
-          </div>
-          <button class="mode-start-btn" id="btnSprintText">Start 2-Min Duell (8. trinn) ➔</button>
+      <div class="hero-compact-bar">
+        <div class="hero-lk20-pill" id="lk20CompactPill">
+          <span>🎯 <strong>8. trinn aktivt (LK20):</strong> Quantifiers &amp; Preposisjoner • UK vs. US English • Vekslepenger (£10/£20)</span>
         </div>
       </div>
+    </div>
 
-      <h2 class="mode-section-title" id="trainingSectionTitle">🎓 3. Treningsnivåer for 8. trinn</h2>
+    <h2 class="mode-section-title" id="compSectionTitle">🏆 1. Konkurransemoduser for 8. trinn</h2>
+    <div class="mode-grid">
+      <div class="mode-card comp" onclick="startGame('rush')">
+        <div>
+          <span class="mode-badge badge-comp">🔥 Mest populær</span>
+          <h3>London Rush Hour</h3>
+          <p>Du har <strong>3 liv (❤️❤️❤️)</strong>. Bestillingene følger kompetansemålene for valgt trinn og øker gradvis fra Nivå 1 til Nivå 3.</p>
+        </div>
+        <button class="mode-start-btn" id="btnRushText">Start Rush Hour (8. trinn) ➔</button>
+      </div>
+
+      <div class="mode-card comp" onclick="startGame('sprint')">
+        <div>
+          <span class="mode-badge badge-comp">⚡ Fellesstart i klassen</span>
+          <h3>2-Minute Class Challenge</h3>
+          <p>Alle har nøyaktig <strong>120 sekunder</strong>! Ekspeder så mange kunder du klarer på ditt klassetrinn før klokka ringer.</p>
+        </div>
+        <button class="mode-start-btn" id="btnSprintText">Start 2-Min Duell (8. trinn) ➔</button>
+      </div>
+    </div>
+
+    <h2 class="mode-section-title" id="trainingSectionTitle">🎓 2. Treningsnivåer for 8. trinn</h2>
       <div class="mode-grid">
         <div class="mode-card" onclick="startGame('lvl1')">
           <div>
@@ -1221,6 +1811,8 @@
 
     <div class="customer-stage">
       <div class="customer-avatar-box">
+        <div class="cust-reaction-tag" id="custReactionTag" style="display:none;"></div>
+        <div class="customer-santa-hat" id="custSantaHat" title="God jul!">🎅</div>
         <div class="customer-emoji" id="custEmoji">🕵️‍♂️</div>
         <div class="customer-name" id="custName">Oliver</div>
         <span class="customer-origin origin-uk" id="custOrigin">🇬🇧 British Local</span>
@@ -1358,7 +1950,89 @@
       </div>
       <div class="receipt-box" id="receiptBox"></div>
       <div id="tillQuestionPrompt" style="font-weight: 800; color: var(--pub-green); margin-bottom: 6px;"></div>
-      <div class="caisse-grid" id="tillOptions"></div>
+
+      <!-- TILL MODE TOGGLE TABS -->
+      <div class="till-mode-switch">
+        <button class="btn-till-tab active" id="tabTillButtons" onclick="setTillInputMode('buttons')">⚡ 4 Hurtigknapper</button>
+        <button class="btn-till-tab" id="tabTillCoins" onclick="setTillInputMode('coins')">🪙 Tell mynter &amp; sedler</button>
+      </div>
+
+      <!-- MODE 1: FAST MULTIPLE CHOICE -->
+      <div id="tillChoiceButtonsView">
+        <div class="caisse-grid" id="tillOptions"></div>
+      </div>
+
+      <!-- MODE 2: INTERACTIVE CASH DRAWER -->
+      <div id="tillInteractiveCoinsView" style="display:none;">
+        <div class="cash-drawer-box">
+          <div class="drawer-header">
+            <span>🗄️ Klikk på mynter og sedler for å telle opp i kassen:</span>
+            <span class="bonus-tag">🌟 +50p Kasserer-bonus!</span>
+          </div>
+
+          <!-- NOTES ROW -->
+          <div class="cash-row notes-row">
+            <button class="cash-note note-20" onclick="addCashItem(20, 'note', '£20')">
+              <span class="note-bank">Bank of England</span>
+              <span class="note-val">£20</span>
+              <span class="note-desc">Twenty Pounds</span>
+            </button>
+            <button class="cash-note note-10" onclick="addCashItem(10, 'note', '£10')">
+              <span class="note-bank">Bank of England</span>
+              <span class="note-val">£10</span>
+              <span class="note-desc">Ten Pounds</span>
+            </button>
+            <button class="cash-note note-5" onclick="addCashItem(5, 'note', '£5')">
+              <span class="note-bank">Bank of England</span>
+              <span class="note-val">£5</span>
+              <span class="note-desc">Five Pounds</span>
+            </button>
+          </div>
+
+          <!-- COINS ROW -->
+          <div class="cash-row coins-row">
+            <button class="cash-coin coin-2" onclick="addCashItem(2, 'coin', '£2')">
+              <span class="coin-val">£2</span>
+              <span class="coin-desc">Two Pounds</span>
+            </button>
+            <button class="cash-coin coin-1" onclick="addCashItem(1, 'coin', '£1')">
+              <span class="coin-val">£1</span>
+              <span class="coin-desc">One Pound</span>
+            </button>
+            <button class="cash-coin coin-50p" onclick="addCashItem(0.50, 'coin', '50p')">
+              <span class="coin-val">50p</span>
+              <span class="coin-desc">Fifty Pence</span>
+            </button>
+            <button class="cash-coin coin-20p" onclick="addCashItem(0.20, 'coin', '20p')">
+              <span class="coin-val">20p</span>
+              <span class="coin-desc">Twenty Pence</span>
+            </button>
+            <button class="cash-coin coin-10p" onclick="addCashItem(0.10, 'coin', '10p')">
+              <span class="coin-val">10p</span>
+              <span class="coin-desc">Ten Pence</span>
+            </button>
+          </div>
+
+          <!-- COUNTED TRAY -->
+          <div class="counted-tray-container">
+            <div class="counted-tray-header">
+              <span>Lagt i kassen (klikk på en mynt/seddel for å fjerne):</span>
+              <strong class="counted-amount-text" id="countedAmountDisplay">£0.00</strong>
+            </div>
+            <div class="counted-coins-surface" id="countedCoinsSurface">
+              <div class="tray-empty" style="padding:10px;">Ingen penger lagt i kassen ennå. Klikk over!</div>
+            </div>
+            <div class="counted-spoken-words" id="countedSpokenWords">“That'll be zero pounds...”</div>
+          </div>
+
+          <div class="cash-drawer-actions">
+            <button class="btn-clear" onclick="clearCashDrawer()">🗑️ Tøm kassen</button>
+            <button class="btn-serve" id="btnConfirmCash" onclick="submitInteractiveCash()">
+              ✅ Bekreft beløp (<span id="btnConfirmAmount">£0.00</span>) ➔
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -1366,17 +2040,52 @@
 <!-- GLOSSARY MODAL -->
 <div class="modal-backdrop" id="glossaryModal">
   <div class="modal-card">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-      <h2 style="font-family: Georgia, serif; color: var(--pub-wood);" id="glossaryTitle">📖 Glosebok</h2>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+      <h2 style="font-family: Georgia, serif; color: var(--pub-wood);" id="glossaryTitle">📖 Glosebok &amp; Språkguide</h2>
       <button class="btn-clear" onclick="closeGlossary()">✖ Lukk</button>
     </div>
-    <p style="font-size:0.88rem; color:#555; margin-bottom:10px;">Klikk på en boks for å høre uttalen:</p>
 
-    <h4 style="margin-top:10px; color:var(--pub-green);">🍽️ Menu Vocabulary for Selected Grade</h4>
-    <div class="glossary-grid" id="glossaryFood"></div>
+    <!-- TABS NAVIGATION -->
+    <div class="glossary-nav-bar">
+      <button class="btn-top active" id="tabBtnGlossaryFood" onclick="switchGlossaryTab('food')">🍽️ Meny &amp; Uttale</button>
+      <button class="btn-top" id="tabBtnGlossaryPhrases" onclick="switchGlossaryTab('phrases')">💬 Fraser &amp; Høflighet</button>
+      <button class="btn-top" id="tabBtnGlossaryUSUK" onclick="switchGlossaryTab('usuk')">🇬🇧 UK vs 🗽 US</button>
+      <button class="btn-top" id="tabBtnGlossaryGrammar" onclick="switchGlossaryTab('grammar')">🧩 Grammatikk &amp; Tips</button>
+    </div>
 
-    <h4 style="margin-top:14px; color:var(--pub-green);">💬 Key Phrases &amp; Expressions</h4>
-    <div class="glossary-grid" id="glossaryPhrases"></div>
+    <!-- TAB 1: FOOD VOCABULARY -->
+    <div id="glossaryTabFood" class="glossary-tab-pane">
+      <p style="font-size:0.88rem; color:#555; margin-bottom:10px;">Klikk på en boks for å høre engelsk uttale:</p>
+      <div class="glossary-grid" id="glossaryFood"></div>
+    </div>
+
+    <!-- TAB 2: KEY PHRASES -->
+    <div id="glossaryTabPhrases" class="glossary-tab-pane" style="display:none;">
+      <p style="font-size:0.88rem; color:#555; margin-bottom:10px;">Nyttige fraser tilpasset trinnet du har valgt:</p>
+      <div class="glossary-grid" id="glossaryPhrases"></div>
+    </div>
+
+    <!-- TAB 3: UK VS US DICTIONARY -->
+    <div id="glossaryTabUSUK" class="glossary-tab-pane" style="display:none;">
+      <p style="font-size:0.88rem; color:#555; margin-bottom:6px;">
+        Viktige forskjeller mellom britisk (🇬🇧) og amerikansk (🗽) engelsk mat-sjargong:
+      </p>
+      <table class="glossary-dict-table">
+        <thead>
+          <tr>
+            <th>🇬🇧 British English</th>
+            <th>🗽 American English</th>
+            <th>Norsk forklaring</th>
+          </tr>
+        </thead>
+        <tbody id="glossaryDictBody"></tbody>
+      </table>
+    </div>
+
+    <!-- TAB 4: GRAMMAR RULES CHEAT SHEET -->
+    <div id="glossaryTabGrammar" class="glossary-tab-pane" style="display:none;">
+      <div class="grammar-card-grid" id="glossaryGrammarTips"></div>
+    </div>
   </div>
 </div>
 
@@ -1385,25 +2094,25 @@
   const GRADE_CONFIG = {
     6: {
       label: '6. trinn',
-      lk20Summary: '<strong>LK20-mål for 6. trinn:</strong> Bruke enkle høflighetsfraser (<em>Can I have..., please?</em>), skille mellom ubestemt artikkel <strong>a</strong> (foran konsonantlyd) og <strong>an</strong> (foran vokallyd), regelrett flertall med <em>-s</em>, enkel nektelse med <em>no</em> og hoderegning med <strong>hele pund (£1–£15)</strong>.',
+      lk20Summary: '<strong>LK20-mål for 6. trinn:</strong> Bruke enkle høflighetsfraser (<em>Can I have..., please?</em>), skille mellom ubestemt artikkel <strong>a</strong> (foran konsonantlyd: <em>a scone, a cup of tea</em>) og <strong>an</strong> (foran vokallyd: <em>an apple pie, an orange juice, an egg sandwich</em>), regelrett flertall med <em>-s</em> og <em>-es</em> (<em>jacket potatoes, sandwiches</em>), enkel nektelse med <em>no</em> og hoderegning med <strong>hele pund (£1–£15)</strong>.',
       lvl1Title: 'a / an & Enkle bestillinger',
-      lvl1Desc: '1–2 varer med tydelig fokus på «a» (a muffin, a cup of tea) vs. «an» (an apple pie, an orange juice) og hele pund.',
-      lvl2Title: 'Flertall (two / three) & Hele pund',
-      lvl2Desc: 'Kundene bestiller to eller tre av samme vare (two muffins, three apple pies). Summen i kassen er alltid hele pund.',
+      lvl1Desc: 'Tydelig fokus på ubestemt artikkel: «a» (a scone, a cup of tea) vs. «an» (an apple pie, an orange juice, an egg sandwich) og hele pund.',
+      lvl2Title: 'Flertall (-s, -es) & Hele pund',
+      lvl2Desc: 'Kundene bestiller to eller tre av samme vare (two scones, two jacket potatoes, three apple pies). Summen i kassen er alltid hele pund.',
       lvl3Title: 'Enkel nektelse («but no..., please»)',
-      lvl3Desc: 'Kundene forteller hva de vil ha, men legger til hva de IKKE vil ha: «...but no orange juice, please».',
+      lvl3Desc: 'Kundene forteller hva de vil ha, men legger til hva de IKKE vil ha: «...but no orange juice, please» eller «...but no egg sandwich, please».',
       usePoliteStep: false,
       useChangeMath: false,
       allowUSTourists: false
     },
     7: {
       label: '7. trinn',
-      lk20Summary: '<strong>LK20-mål for 7. trinn:</strong> Muntlig samhandling i høflige situasjoner, mengdeord (<em>a portion of, a slice of, a bottle of, a mug of</em>), flertallsbøying på <em>-ies</em> (<em>pasties</em>), ekskludering med <em>without / and not any</em>, høflig respons til kunden og regning med <strong>pounds &amp; fifty pence (£4.50)</strong>.',
-      lvl1Title: 'Mengdeord (Quantifiers) & Høflighet',
-      lvl1Desc: 'Øv på uttrykk som «a portion of fish and chips», «a slice of apple pie», «a bottle of water» og høflig svar ved servering.',
-      lvl2Title: 'Flertall (-ies) & Halve pund (50p)',
-      lvl2Desc: 'Flertall av mengdeord («two cups of tea», «two Cornish pasties») og hoderegning med pund og femti pence (f.eks. £6.50).',
-      lvl3Title: 'Unntak («without / and not any»)',
+      lk20Summary: '<strong>LK20-mål for 7. trinn:</strong> Muntlig samhandling i høflige situasjoner, mengdeord (<em>a portion of, a slice of, a plate of, a bowl of, a bottle of, a mug of</em>), preposisjonsfraser (<em>with baked beans, with jam, on the side</em>), flertallsbøying på <em>-ies</em> (<em>pasties</em>) og <em>-es</em> (<em>potatoes</em>), ekskludering med <em>without / and not any</em>, høflig respons til kunden og regning med <strong>pounds &amp; fifty pence (£4.50)</strong>.',
+      lvl1Title: 'Mengdeord & Preposisjoner',
+      lvl1Desc: 'Øv på uttrykk som «a plate of shepherd\'s pie», «a warm scone with jam», «a cold bottle of ginger beer» og høflig svar ved servering.',
+      lvl2Title: 'Flertall (-ies, -es) & Halve pund (50p)',
+      lvl2Desc: 'Flertall av mengdeord («two Cornish pasties», «two jacket potatoes with baked beans») og hoderegning med pund og femti pence (f.eks. £4.50, £6.50).',
+      lvl3Title: 'Ekskludering («without / and not any»)',
       lvl3Desc: 'Kundene ber om varer uten bestemte ting («...without any crisps», «...and not any hot chocolate, please»).',
       usePoliteStep: true,
       useChangeMath: false,
@@ -1411,11 +2120,11 @@
     },
     8: {
       label: '8. trinn',
-      lk20Summary: '<strong>LK20-mål for 8. trinn:</strong> Kjenne til språklige variasjoner i den engelskspråklige verden (<strong>🇬🇧 UK vs. 🗽 US English</strong>), tolke idiomatiske uttrykk og spontane ombestemmelser (<em>Actually, skip the... / Hold the... / On second thought...</em>), pragmatisk korrekt respons og regne ut <strong>vekslepenger (change)</strong> fra £10- og £20-sedler.',
-      lvl1Title: 'Quantifiers & Pragmatisk Høflighet',
-      lvl1Desc: 'Naturlige britiske kafébestillinger med mengdeord, desimalpriser og valg av grammatisk/høflig riktig svar til kunden.',
+      lk20Summary: '<strong>LK20-mål for 8. trinn:</strong> Kjenne til språklige variasjoner i den engelskspråklige verden (<strong>🇬🇧 UK vs. 🗽 US English</strong>: <em>jacket potato/baked potato, ginger beer/ginger ale, chips/fries, crisps/chips, biscuit/cookie, scone/sweet biscuit</em>), tolke idiomatiske uttrykk og spontane ombestemmelser (<em>Actually, skip the... / Hold the... / On second thought...</em>), pragmatisk korrekt respons og regne ut <strong>vekslepenger (change)</strong> fra £10- og £20-sedler.',
+      lvl1Title: 'Quantifiers, Preposisjoner & Pragmatikk',
+      lvl1Desc: 'Naturlige britiske kafébestillinger med mengdeord, preposisjoner, desimalpriser og valg av grammatisk/høflig riktig svar til kunden.',
       lvl2Title: '🇬🇧 UK vs. 🗽 US English & Vekslepenger',
-      lvl2Desc: 'Amerikanske turister bestiller «french fries, cookies, potato chips, grilled cheese» og betaler med £10/£20-sedler som krever vekslepenger!',
+      lvl2Desc: 'Amerikanske turister bestiller «baked potatoes, french fries, cookies, potato chips, grilled cheese» og betaler med £10/£20-sedler som krever vekslepenger!',
       lvl3Title: 'Idiomer, Allergier & Ombestemmelser',
       lvl3Desc: 'Kundene ombestemmer seg midt i bestillingen: «Actually, skip the...», «Hold the...» og «On second thought, no...».',
       usePoliteStep: true,
@@ -1424,67 +2133,74 @@
     }
   };
 
-  // --- MENU ITEMS WITH GRADE-SPECIFIC FORMS & PRICES ---
+  // --- MENU ITEMS WITH GRADE-SPECIFIC FORMS & PRICES (16 BRITISKE RETTER & DRIKKER) ---
   const MENU_ITEMS = [
     {
       id: 'fish',
       emoji: '🐟',
       no: 'fish & chips',
+      hot: true,
       g6: { sing: 'fish and chips', plural: 'fish and chips', price: 6, rule: 'art-a', explain: 'Tradisjonell britisk rett (£6)' },
-      g7: { sing: 'a portion of fish and chips', plural: 'portions of fish and chips', price: 6.50, rule: 'art-a', explain: 'Mengdeord: «a portion of» (en porsjon med)' },
-      g8: { sing: 'a portion of fish and chips', plural: 'portions of fish and chips', usSing: 'an order of fish and french fries', usPlural: 'orders of fish and french fries', price: 6.50, rule: 'art-a', explain: '🇬🇧 «chips» = 🗽 «french fries»' },
+      g7: { sing: 'a portion of fish and chips', plural: 'portions of fish and chips', price: 6.50, rule: 'quant', explain: 'Mengdeord: «a portion of» (en porsjon med)' },
+      g8: { sing: 'a portion of fish and chips', plural: 'portions of fish and chips', usSing: 'an order of fish and french fries', usPlural: 'orders of fish and french fries', price: 6.50, rule: 'usuk', explain: '🇬🇧 «chips» = 🗽 «french fries»' },
       bare: 'the fish and chips'
     },
     {
       id: 'pasty',
       emoji: '🥟',
-      no: 'en kjøttpirogg (pasty)',
+      no: 'en Cornish pasty (kjøttpirogg)',
+      hot: true,
       g6: { sing: 'a meat pie', plural: 'meat pies', price: 4, rule: 'art-a', explain: '«a» foran konsonantlyd (m)' },
-      g7: { sing: 'a Cornish pasty', plural: 'Cornish pasties', price: 4.00, rule: 'art-a', explain: 'Flertall: konsonant + y blir til -ies (pasties)' },
-      g8: { sing: 'a Cornish pasty', plural: 'Cornish pasties', usSing: 'a British savory meat pie', usPlural: 'British savory meat pies', price: 4.00, rule: 'art-a', explain: 'Flertall: pasty ➔ pasties' },
+      g7: { sing: 'a Cornish pasty', plural: 'Cornish pasties', price: 4.00, rule: 'pl-ies', explain: 'Flertall: konsonant + y blir til -ies (pasties)' },
+      g8: { sing: 'a Cornish pasty', plural: 'Cornish pasties', usSing: 'a British savory meat pie', usPlural: 'British savory meat pies', price: 4.00, rule: 'pl-ies', explain: 'Flertall: pasty ➔ pasties' },
       bare: 'the Cornish pasty'
     },
     {
       id: 'pie',
       emoji: '🥧',
       no: 'eplepai',
-      g6: { sing: 'an apple pie', plural: 'apple pies', price: 3, rule: 'art-an', explain: '«an» foran vokallyd (apple)' },
-      g7: { sing: 'a slice of apple pie', plural: 'slices of apple pie', price: 3.50, rule: 'art-a', explain: 'Mengdeord: «a slice of» (et stykke med)' },
-      g8: { sing: 'a slice of apple pie', plural: 'slices of apple pie', usSing: 'a slice of warm apple pie', usPlural: 'slices of warm apple pie', price: 3.50, rule: 'art-a', explain: 'Mengdeord: «a slice of»' },
+      hot: true,
+      g6: { sing: 'an apple pie', plural: 'apple pies', price: 3, rule: 'art-an', explain: '«an» foran vokallyd (a i apple)' },
+      g7: { sing: 'a slice of apple pie', plural: 'slices of apple pie', price: 3.50, rule: 'quant', explain: 'Mengdeord: «a slice of» (et stykke med)' },
+      g8: { sing: 'a slice of warm apple pie', plural: 'slices of warm apple pie', usSing: 'a slice of warm apple pie', usPlural: 'slices of warm apple pie', price: 3.50, rule: 'quant', explain: 'Mengdeord: «a slice of»' },
       bare: 'the apple pie'
     },
     {
       id: 'biscuit',
       emoji: '🍪',
       no: 'en sjokoladekjeks',
+      hot: false,
       g6: { sing: 'a biscuit', plural: 'biscuits', price: 2, rule: 'art-a', explain: '«a» foran konsonantlyd (b)' },
       g7: { sing: 'a chocolate biscuit', plural: 'chocolate biscuits', price: 2.00, rule: 'art-a', explain: 'Britiske «biscuits» er sprø kjeks' },
-      g8: { sing: 'a chocolate biscuit', plural: 'chocolate biscuits', usSing: 'a chocolate chip cookie', usPlural: 'chocolate chip cookies', price: 2.00, rule: 'art-a', explain: '🇬🇧 «biscuit» = 🗽 «cookie»' },
+      g8: { sing: 'a chocolate biscuit', plural: 'chocolate biscuits', usSing: 'a chocolate chip cookie', usPlural: 'chocolate chip cookies', price: 2.00, rule: 'usuk', explain: '🇬🇧 «biscuit» = 🗽 «cookie»' },
       bare: 'the chocolate biscuit'
     },
     {
       id: 'tea',
       emoji: '🫖',
       no: 'en kopp te',
+      hot: true,
       g6: { sing: 'a cup of tea', plural: 'cups of tea', price: 2, rule: 'art-a', explain: 'Fast uttrykk: «a cup of tea»' },
-      g7: { sing: 'a cup of tea', plural: 'cups of tea', price: 2.00, rule: 'art-a', explain: 'Utellelig væske telles med «cup(s) of»' },
-      g8: { sing: 'a cup of tea', plural: 'cups of tea', usSing: 'a cup of hot black tea', usPlural: 'cups of hot black tea', price: 2.00, rule: 'art-a', explain: 'Flertall på beholderen: «cups of tea»' },
+      g7: { sing: 'a cup of tea', plural: 'cups of tea', price: 2.00, rule: 'quant', explain: 'Utellelig væske telles med «cup(s) of»' },
+      g8: { sing: 'a cup of hot tea', plural: 'cups of hot tea', usSing: 'a cup of hot black tea', usPlural: 'cups of hot black tea', price: 2.00, rule: 'quant', explain: 'Flertall på beholderen: «cups of tea»' },
       bare: 'the tea'
     },
     {
       id: 'hotchoc',
       emoji: '🍫',
       no: 'varm sjokolade',
+      hot: true,
       g6: { sing: 'a hot chocolate', plural: 'hot chocolates', price: 3, rule: 'art-a', explain: '«a» foran uttalt h-lyd (hot)' },
-      g7: { sing: 'a mug of hot chocolate', plural: 'mugs of hot chocolate', price: 3.50, rule: 'art-a', explain: 'Mengdeord: «a mug of» (et krus med)' },
-      g8: { sing: 'a mug of hot chocolate', plural: 'mugs of hot chocolate', usSing: 'a mug of hot cocoa', usPlural: 'mugs of hot cocoa', price: 3.50, rule: 'art-a', explain: '🇬🇧 «hot chocolate» = 🗽 «hot cocoa»' },
+      g7: { sing: 'a mug of hot chocolate', plural: 'mugs of hot chocolate', price: 3.50, rule: 'quant', explain: 'Mengdeord: «a mug of» (et krus med)' },
+      g8: { sing: 'a mug of hot chocolate', plural: 'mugs of hot chocolate', usSing: 'a mug of hot cocoa', usPlural: 'mugs of hot cocoa', price: 3.50, rule: 'usuk', explain: '🇬🇧 «hot chocolate» = 🗽 «hot cocoa»' },
       bare: 'the hot chocolate'
     },
     {
       id: 'juice',
       emoji: '🧃',
       no: 'appelsinjuice',
-      g6: { sing: 'an orange juice', plural: 'orange juices', price: 2, rule: 'art-an', explain: '«an» foran vokallyd (orange)' },
+      hot: false,
+      g6: { sing: 'an orange juice', plural: 'orange juices', price: 2, rule: 'art-an', explain: '«an» foran vokallyd (o i orange)' },
       g7: { sing: 'an orange juice', plural: 'orange juices', price: 2.50, rule: 'art-an', explain: '«an» foran vokallyd (orange)' },
       g8: { sing: 'an orange juice', plural: 'orange juices', usSing: 'a glass of orange juice', usPlural: 'glasses of orange juice', price: 2.50, rule: 'art-an', explain: '«an orange juice» / «a glass of...»' },
       bare: 'the orange juice'
@@ -1492,29 +2208,92 @@
     {
       id: 'toastie',
       emoji: '🥪',
-      no: 'et ostesmørbrød',
-      g6: { sing: 'a cheese sandwich', plural: 'cheese sandwiches', price: 4, rule: 'art-a', explain: 'Flertall etter -ch får -es (sandwiches)' },
+      no: 'et ostesmørbrød (toastie)',
+      hot: true,
+      g6: { sing: 'a cheese sandwich', plural: 'cheese sandwiches', price: 4, rule: 'pl-es', explain: 'Flertall etter -ch får -es (sandwiches)' },
       g7: { sing: 'a cheese toastie', plural: 'cheese toasties', price: 4.50, rule: 'art-a', explain: 'Britisk hverdagsord for grillet ostesmørbrød' },
-      g8: { sing: 'a cheese toastie', plural: 'cheese toasties', usSing: 'a grilled cheese sandwich', usPlural: 'grilled cheese sandwiches', price: 4.50, rule: 'art-a', explain: '🇬🇧 «cheese toastie» = 🗽 «grilled cheese sandwich»' },
+      g8: { sing: 'a cheese toastie', plural: 'cheese toasties', usSing: 'a grilled cheese sandwich', usPlural: 'grilled cheese sandwiches', price: 4.50, rule: 'usuk', explain: '🇬🇧 «cheese toastie» = 🗽 «grilled cheese sandwich»' },
       bare: 'the cheese toastie'
     },
     {
       id: 'crisps',
       emoji: '🥔',
-      no: 'potetgull',
+      no: 'potetgull (crisps)',
+      hot: false,
       g6: { sing: 'a bag of crisps', plural: 'bags of crisps', price: 1, rule: 'art-a', explain: '«crisps» = potetgull i Storbritannia' },
-      g7: { sing: 'a packet of crisps', plural: 'packets of crisps', price: 1.50, rule: 'art-a', explain: 'Mengdeord: «a packet of crisps»' },
-      g8: { sing: 'a packet of crisps', plural: 'packets of crisps', usSing: 'a bag of potato chips', usPlural: 'bags of potato chips', price: 1.50, rule: 'art-a', explain: '🇬🇧 «crisps» = 🗽 «potato chips»!' },
+      g7: { sing: 'a packet of crisps', plural: 'packets of crisps', price: 1.50, rule: 'quant', explain: 'Mengdeord: «a packet of crisps»' },
+      g8: { sing: 'a packet of crisps', plural: 'packets of crisps', usSing: 'a bag of potato chips', usPlural: 'bags of potato chips', price: 1.50, rule: 'usuk', explain: '🇬🇧 «crisps» = 🗽 «potato chips»!' },
       bare: 'the crisps'
     },
     {
       id: 'water',
       emoji: '💧',
       no: 'en flaske vann',
+      hot: false,
       g6: { sing: 'a bottle of water', plural: 'bottles of water', price: 1, rule: 'art-a', explain: '«a bottle of water» (en flaske vann)' },
-      g7: { sing: 'a bottle of still water', plural: 'bottles of still water', price: 1.50, rule: 'art-a', explain: '«still water» = vann uten kullsyre' },
-      g8: { sing: 'a bottle of still water', plural: 'bottles of still water', usSing: 'a bottle of regular water', usPlural: 'bottles of regular water', price: 1.50, rule: 'art-a', explain: '🇬🇧 «still water» = 🗽 «regular water»' },
+      g7: { sing: 'a bottle of still water', plural: 'bottles of still water', price: 1.50, rule: 'quant', explain: '«still water» = vann uten kullsyre' },
+      g8: { sing: 'a bottle of still water', plural: 'bottles of still water', usSing: 'a bottle of regular water', usPlural: 'bottles of regular water', price: 1.50, rule: 'usuk', explain: '🇬🇧 «still water» = 🗽 «regular water»' },
       bare: 'the water'
+    },
+    {
+      id: 'scone',
+      emoji: '🫓',
+      no: 'en scone med syltetøy',
+      hot: true,
+      g6: { sing: 'a scone', plural: 'scones', price: 2, rule: 'art-a', explain: '«a» foran konsonantlyd (s) (£2)' },
+      g7: { sing: 'a warm scone with jam', plural: 'warm scones with jam', price: 2.50, rule: 'prep', explain: 'Preposisjon: «with jam» (med syltetøy)' },
+      g8: { sing: 'a scone with clotted cream and jam', plural: 'scones with clotted cream and jam', usSing: 'a sweet British biscuit with cream and jelly', usPlural: 'sweet British biscuits with cream and jelly', price: 2.50, rule: 'usuk', explain: '🇬🇧 «scone / jam» = 🗽 «sweet biscuit / jelly»' },
+      bare: 'the scone'
+    },
+    {
+      id: 'shepherd',
+      emoji: '🍲',
+      no: "shepherd's pie (kjøttgrateng)",
+      hot: true,
+      g6: { sing: "a shepherd's pie", plural: "shepherd's pies", price: 6, rule: 'art-a', explain: "Britisk tradisjonsrett (£6)" },
+      g7: { sing: "a plate of shepherd's pie", plural: "plates of shepherd's pie", price: 6.50, rule: 'quant', explain: "Mengdeord: «a plate of» (en tallerken med)" },
+      g8: { sing: "a steaming plate of shepherd's pie", plural: "steaming plates of shepherd's pie", usSing: "a dish of shepherd's pie with lamb", usPlural: "dishes of shepherd's pie with lamb", price: 6.50, rule: 'quant', explain: "Mengdeord: «a plate of»" },
+      bare: "the shepherd's pie"
+    },
+    {
+      id: 'jacket',
+      emoji: '🥔',
+      no: 'en bakt potet (jacket potato)',
+      hot: true,
+      g6: { sing: 'a jacket potato', plural: 'jacket potatoes', price: 4, rule: 'pl-es', explain: 'Flertall: poteter slutter på -oes (potatoes)' },
+      g7: { sing: 'a jacket potato with baked beans', plural: 'jacket potatoes with baked beans', price: 4.50, rule: 'prep', explain: 'Preposisjon: «with baked beans» (med hvite bønner)' },
+      g8: { sing: 'a jacket potato with melted cheddar', plural: 'jacket potatoes with melted cheddar', usSing: 'a baked potato with cheese', usPlural: 'baked potatoes with cheese', price: 4.50, rule: 'usuk', explain: '🇬🇧 «jacket potato» = 🗽 «baked potato»' },
+      bare: 'the jacket potato'
+    },
+    {
+      id: 'ginger',
+      emoji: '🍺',
+      no: 'en ingefærøl (alkoholfri)',
+      hot: false,
+      g6: { sing: 'a ginger beer', plural: 'ginger beers', price: 2, rule: 'art-a', explain: 'Tradisjonell alkoholfri britisk brus (£2)' },
+      g7: { sing: 'a cold bottle of ginger beer', plural: 'cold bottles of ginger beer', price: 2.50, rule: 'quant', explain: 'Mengdeord: «a bottle of» (en flaske med)' },
+      g8: { sing: 'a bottle of fiery ginger beer', plural: 'bottles of fiery ginger beer', usSing: 'a bottle of ginger ale', usPlural: 'bottles of ginger ale', price: 2.50, rule: 'usuk', explain: '🇬🇧 «ginger beer» = 🗽 «ginger ale»' },
+      bare: 'the ginger beer'
+    },
+    {
+      id: 'pudding',
+      emoji: '🍮',
+      no: 'sticky toffee pudding (karamellkake)',
+      hot: true,
+      g6: { sing: 'a pudding', plural: 'puddings', price: 3, rule: 'art-a', explain: '«pudding» = dessert i Storbritannia (£3)' },
+      g7: { sing: 'a bowl of sticky toffee pudding', plural: 'bowls of sticky toffee pudding', price: 3.50, rule: 'quant', explain: 'Mengdeord: «a bowl of» (en skål med)' },
+      g8: { sing: 'a portion of sticky toffee pudding with custard', plural: 'portions of sticky toffee pudding with custard', usSing: 'a warm date cake with caramel and custard', usPlural: 'warm date cakes with caramel and custard', price: 3.50, rule: 'prep', explain: '🇬🇧 «custard» = vaniljesaus, «pudding» = dessert' },
+      bare: 'the pudding'
+    },
+    {
+      id: 'egg',
+      emoji: '🥪',
+      no: 'et eggesmørbrød',
+      hot: false,
+      g6: { sing: 'an egg sandwich', plural: 'egg sandwiches', price: 3, rule: 'art-an', explain: '«an» foran vokallyd (e i egg)! Flertall: -es (sandwiches)' },
+      g7: { sing: 'an egg mayonnaise sandwich', plural: 'egg mayonnaise sandwiches', price: 3.50, rule: 'art-an', explain: '«an» foran vokallyd (egg)' },
+      g8: { sing: 'an egg and cress sandwich', plural: 'egg and cress sandwiches', usSing: 'an egg salad sandwich', usPlural: 'egg salad sandwiches', price: 3.50, rule: 'usuk', explain: '🇬🇧 «egg and cress» = 🗽 «egg salad»' },
+      bare: 'the egg sandwich'
     }
   ];
 
@@ -1529,14 +2308,16 @@
   };
 
   const CUSTOMERS = [
-    { name: 'Oliver', emoji: '🕵️‍♂️', origin: 'UK' },
-    { name: 'Emily', emoji: '👩‍🎓', origin: 'UK' },
-    { name: 'Harry', emoji: '🧑‍💼', origin: 'UK' },
-    { name: 'Poppy', emoji: '👩‍🎨', origin: 'UK' },
-    { name: 'Brandon (NY)', emoji: '🗽', origin: 'US' },
-    { name: 'Madison (LA)', emoji: '🤠', origin: 'US' },
-    { name: 'Mr Davies', emoji: '👴', origin: 'UK' },
-    { name: 'Mrs Evans', emoji: '👵', origin: 'UK' }
+    { name: 'Oliver (Detective)', emoji: '🕵️‍♂️', origin: 'UK' },
+    { name: 'Emily (Student)', emoji: '👩‍🎓', origin: 'UK' },
+    { name: 'Sir Reginald (Local Lord)', emoji: '🎩', origin: 'UK' },
+    { name: 'Poppy (Artist)', emoji: '👩‍🎨', origin: 'UK' },
+    { name: 'Harry (City Banker)', emoji: '🧑‍💼', origin: 'UK' },
+    { name: 'Mrs Evans (Grandmother)', emoji: '👵', origin: 'UK' },
+    { name: 'Mr Davies (Old Sailor)', emoji: '👴', origin: 'UK' },
+    { name: 'Brandon (Brooklyn, NY)', emoji: '🗽', origin: 'US' },
+    { name: 'Madison (Austin, TX)', emoji: '🤠', origin: 'US' },
+    { name: 'Chloe (California Surfer)', emoji: '🏄‍♀️', origin: 'US' }
   ];
 
   // --- STATE ---
@@ -1565,8 +2346,125 @@
     firstTryOnCurrentCustomer: true,
     awaitingNextCustomerClick: false,
     clearConfirmPending: false,
-    mistakeLog: []
+    mistakeLog: [],
+    tillInputMode: 'buttons', // 'buttons' or 'coins'
+    countedAmount: 0,
+    countedItems: [],
+    currentTillTarget: 0,
+    currentTillTotal: 0,
+    currentTillIsChange: false,
+    xmasMode: true
   };
+
+
+  // --- CUSTOMER REACTION TAGS (FEATURE D) ---
+  function showCustomerReaction(text, isPositive = true) {
+    const tag = document.getElementById('custReactionTag');
+    if (!tag) return;
+    tag.className = `cust-reaction-tag ${isPositive ? '' : 'confused'}`;
+    tag.textContent = text;
+    tag.style.display = 'block';
+  }
+
+  function hideCustomerReaction() {
+    const tag = document.getElementById('custReactionTag');
+    if (tag) tag.style.display = 'none';
+  }
+
+  // --- INTERACTIVE CASH DRAWER (FEATURE B) ---
+  function setTillInputMode(mode) {
+    state.tillInputMode = mode;
+    const btnTab = document.getElementById('tabTillButtons');
+    const coinTab = document.getElementById('tabTillCoins');
+    const buttonsView = document.getElementById('tillChoiceButtonsView');
+    const coinsView = document.getElementById('tillInteractiveCoinsView');
+
+    if (mode === 'coins') {
+      if (btnTab) btnTab.classList.remove('active');
+      if (coinTab) coinTab.classList.add('active');
+      if (buttonsView) buttonsView.style.display = 'none';
+      if (coinsView) coinsView.style.display = 'block';
+      renderCountedCash();
+    } else {
+      if (coinTab) coinTab.classList.remove('active');
+      if (btnTab) btnTab.classList.add('active');
+      if (coinsView) coinsView.style.display = 'none';
+      if (buttonsView) buttonsView.style.display = 'block';
+    }
+  }
+
+  function addCashItem(value, type, label) {
+    state.countedItems.push({ value, type, label });
+    state.countedAmount = Math.round((state.countedAmount + value) * 100) / 100;
+    playTone(type === 'coin' ? 'coin' : 'paper');
+    renderCountedCash();
+  }
+
+  function removeCashItem(idx) {
+    if (idx >= 0 && idx < state.countedItems.length) {
+      const removed = state.countedItems.splice(idx, 1)[0];
+      state.countedAmount = Math.max(0, Math.round((state.countedAmount - removed.value) * 100) / 100);
+      playTone('pop');
+      renderCountedCash();
+    }
+  }
+
+  function clearCashDrawer() {
+    state.countedItems = [];
+    state.countedAmount = 0;
+    playTone('pop');
+    renderCountedCash();
+  }
+
+  function renderCountedCash() {
+    const display = document.getElementById('countedAmountDisplay');
+    const surface = document.getElementById('countedCoinsSurface');
+    const spoken = document.getElementById('countedSpokenWords');
+    const btnAmount = document.getElementById('btnConfirmAmount');
+
+    if (display) display.textContent = formatGBP(state.countedAmount);
+    if (btnAmount) btnAmount.textContent = formatGBP(state.countedAmount);
+
+    if (surface) {
+      if (state.countedItems.length === 0) {
+        surface.innerHTML = `<div class="tray-empty" style="padding:10px;">Ingen penger lagt i kassen ennå. Klikk over!</div>`;
+      } else {
+        surface.innerHTML = state.countedItems.map((item, i) => `
+          <button class="counted-chip" onclick="removeCashItem(${i})" title="Klikk for å fjerne">
+            <span>${item.type === 'coin' ? '🪙' : '💷'} ${item.label}</span>
+            <span style="color:#ef4444; font-size:0.75rem;">✖</span>
+          </button>
+        `).join('');
+      }
+    }
+
+    if (spoken) {
+      const words = amountToEnglishWords(state.countedAmount);
+      const prefix = state.currentTillIsChange ? 'Your change is' : "That'll be";
+      spoken.textContent = `“${prefix} ${words}”`;
+    }
+  }
+
+  function submitInteractiveCash() {
+    if (state.countedAmount === 0) {
+      showFeedback('Legg til mynter eller sedler i kassen først!', 'error');
+      playTone('error');
+      return;
+    }
+
+    const correctTarget = state.currentTillTarget;
+    const total = state.currentTillTotal;
+    const isChange = state.currentTillIsChange;
+    const isMatch = Math.abs(state.countedAmount - correctTarget) < 0.01;
+
+    if (isMatch) {
+      // Extra cashier bonus for manual coin counting!
+      state.score += 50;
+      showFeedback('🌟 Fantastisk mynt-telling! +50p Kasserer-bonus!', 'success');
+    }
+
+    submitPayment(state.countedAmount, correctTarget, total, isChange);
+  }
 
   function getItemData(item) {
     const gKey = 'g' + state.grade;
@@ -1624,6 +2522,85 @@
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
         osc.start(now);
         osc.stop(now + 0.4);
+      } else if (type === 'coin') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(1400, now);
+        osc.frequency.exponentialRampToValueAtTime(3200, now + 0.03);
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+        osc.start(now);
+        osc.stop(now + 0.25);
+      } else if (type === 'paper') {
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(260, now);
+        osc.frequency.linearRampToValueAtTime(180, now + 0.12);
+        gain.gain.setValueAtTime(0.14, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.14);
+        osc.start(now);
+        osc.stop(now + 0.14);
+      } else if (type === 'meow') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(450, now);
+        osc.frequency.linearRampToValueAtTime(750, now + 0.18);
+        osc.frequency.exponentialRampToValueAtTime(520, now + 0.4);
+        gain.gain.setValueAtTime(0.16, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.42);
+        osc.start(now);
+        osc.stop(now + 0.42);
+      } else if (type === 'bark') {
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(220, now);
+        osc.frequency.exponentialRampToValueAtTime(110, now + 0.18);
+        gain.gain.setValueAtTime(0.18, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
+        osc.start(now);
+        osc.stop(now + 0.2);
+      } else if (type === 'juke') {
+        const notes = [523.25, 659.25, 783.99, 1046.50];
+        notes.forEach((freq, idx) => {
+          const o = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
+          o.connect(g);
+          g.connect(audioCtx.destination);
+          o.frequency.setValueAtTime(freq, now + idx * 0.1);
+          g.gain.setValueAtTime(0.16, now + idx * 0.1);
+          g.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.1 + 0.25);
+          o.start(now + idx * 0.1);
+          o.stop(now + idx * 0.1 + 0.25);
+        });
+      } else if (type === 'coinBurst') {
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(1318, now);
+        osc.frequency.setValueAtTime(1760, now + 0.06);
+        osc.frequency.setValueAtTime(2093, now + 0.12);
+        gain.gain.setValueAtTime(0.22, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+        osc.start(now);
+        osc.stop(now + 0.35);
+      } else if (type === 'fanfare') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(523.25, now);
+        osc.frequency.setValueAtTime(659.25, now + 0.08);
+        osc.frequency.setValueAtTime(783.99, now + 0.16);
+        osc.frequency.setValueAtTime(1046.50, now + 0.24);
+        gain.gain.setValueAtTime(0.25, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.55);
+        osc.start(now);
+        osc.stop(now + 0.55);
+      } else if (type === 'xmasJingle') {
+        const jingleFrequencies = [1568, 1760, 2093]; // Crisp festive sleigh bells
+        jingleFrequencies.forEach((freq, idx) => {
+          const o = audioCtx.createOscillator();
+          const g = audioCtx.createGain();
+          o.type = 'triangle';
+          o.connect(g);
+          g.connect(audioCtx.destination);
+          o.frequency.setValueAtTime(freq, now + idx * 0.08);
+          g.gain.setValueAtTime(0.18, now + idx * 0.08);
+          g.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.08 + 0.32);
+          o.start(now + idx * 0.08);
+          o.stop(now + idx * 0.08 + 0.32);
+        });
       } else if (type === 'error') {
         osc.type = 'sawtooth';
         osc.frequency.setValueAtTime(180, now);
@@ -1634,6 +2611,37 @@
         osc.stop(now + 0.28);
       }
     } catch (e) {}
+  }
+
+
+  // --- VISUAL COIN BURST CELEBRATION ---
+  function triggerCoinBurst() {
+    const container = document.getElementById('coinBurstContainer');
+    if (!container) return;
+    const symbols = ['🪙', '💷', '✨', '🪙', '£', '✨'];
+    const originX = window.innerWidth / 2;
+    const originY = window.innerHeight * 0.42;
+
+    for (let i = 0; i < 12; i++) {
+      const coin = document.createElement('div');
+      coin.className = 'burst-coin';
+      coin.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      coin.style.left = originX + 'px';
+      coin.style.top = originY + 'px';
+
+      const angle = (Math.PI * 2 * i) / 12 + (Math.random() - 0.5) * 0.35;
+      const dist = 90 + Math.random() * 150;
+      const dx = Math.cos(angle) * dist;
+      const dy = Math.sin(angle) * dist - 60;
+
+      coin.style.setProperty('--dx', `${dx}px`);
+      coin.style.setProperty('--dy', `${dy}px`);
+      container.appendChild(coin);
+
+      setTimeout(() => {
+        if (coin.parentNode) coin.parentNode.removeChild(coin);
+      }, 900);
+    }
   }
 
   // --- SPEECH SYNTHESIS ---
@@ -1656,8 +2664,108 @@
     }
   }
 
+  // --- CHRISTMAS SNOW ENGINE & AWNING LIGHTS ---
+  let snowAnimId = null;
+  let snowflakes = [];
+
+  function setupAwningLights() {
+    const el = document.getElementById('awningLights');
+    if (!el || el.children.length > 0) return;
+    const colors = ['#ef4444', '#fbbf24', '#22c55e', '#60a5fa', '#f43f5e', '#eab308'];
+    const count = Math.min(36, Math.floor(window.innerWidth / 30));
+    let html = '';
+    for (let i = 0; i < count; i++) {
+      const col = colors[i % colors.length];
+      html += `<div class="xmas-bulb" style="background:${col}; color:${col};"></div>`;
+    }
+    el.innerHTML = html;
+  }
+
+  function initSnow() {
+    const canvas = document.getElementById('snowCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.removeEventListener('resize', resizeCanvas);
+    window.addEventListener('resize', resizeCanvas);
+
+    snowflakes = [];
+    const count = Math.min(48, Math.floor(window.innerWidth / 28));
+    for (let i = 0; i < count; i++) {
+      snowflakes.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 2.4 + 1.2,
+        density: Math.random() * 1.1 + 0.5,
+        wind: Math.random() * 0.7 - 0.35,
+        alpha: Math.random() * 0.6 + 0.35
+      });
+    }
+
+    function drawSnow() {
+      if (!state.xmasMode) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = 'white';
+
+      for (let i = 0; i < snowflakes.length; i++) {
+        const flake = snowflakes[i];
+        ctx.save();
+        ctx.globalAlpha = flake.alpha;
+        ctx.beginPath();
+        ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+
+        flake.y += flake.density * 1.05;
+        flake.x += flake.wind + Math.sin(flake.y * 0.02) * 0.35;
+
+        if (flake.y > canvas.height) {
+          flake.y = -5;
+          flake.x = Math.random() * canvas.width;
+        }
+        if (flake.x > canvas.width) flake.x = 0;
+        else if (flake.x < 0) flake.x = canvas.width;
+      }
+      snowAnimId = requestAnimationFrame(drawSnow);
+    }
+
+    if (!snowAnimId) {
+      snowAnimId = requestAnimationFrame(drawSnow);
+    }
+  }
+
+  function startSnow() {
+    if (!snowAnimId) {
+      initSnow();
+    }
+  }
+
+  function stopSnow() {
+    if (snowAnimId) {
+      cancelAnimationFrame(snowAnimId);
+      snowAnimId = null;
+      const canvas = document.getElementById('snowCanvas');
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+  }
+
   // --- INITIALIZATION & GRADE SELECTION ---
   function init() {
+    const savedXmas = localStorage.getItem('londonPubXmasMode');
+    state.xmasMode = savedXmas === null ? true : (savedXmas === 'true');
+    document.body.classList.toggle('xmas-mode', state.xmasMode);
+    if (state.xmasMode) {
+      startSnow();
+      setupAwningLights();
+    }
     selectGrade(8);
     renderLeaderboard();
     syncTopButtonsUI();
@@ -1672,33 +2780,61 @@
     state.grade = g;
     const cfg = GRADE_CONFIG[g];
 
-    // Update menu tabs
+    // Update topbar grade pills & teacher tools
     [6, 7, 8].forEach(num => {
+      const topBtn = document.getElementById('btnTopG' + num);
+      if (topBtn) topBtn.classList.toggle('active-grade-pill', num === g);
       const tab = document.getElementById('tabGrade' + num);
       if (tab) tab.classList.toggle('active-grade', num === g);
       const tBtn = document.getElementById('btnTeachG' + num);
       if (tBtn) tBtn.classList.toggle('grade-active', num === g);
     });
 
-    document.getElementById('btnTopGrade').textContent = `🎯 Trinn: ${cfg.label}`;
-    document.getElementById('hudGrade').textContent = cfg.label;
-    document.getElementById('lk20Description').innerHTML = cfg.lk20Summary;
+    const btnTopGrade = document.getElementById('btnTopGrade');
+    if (btnTopGrade) btnTopGrade.textContent = `🎯 Trinn: ${cfg.label}`;
 
-    document.getElementById('btnRushText').textContent = `Start Rush Hour (${cfg.label}) ➔`;
-    document.getElementById('btnSprintText').textContent = `Start 2-Min Duell (${cfg.label}) ➔`;
-    document.getElementById('trainingSectionTitle').textContent = `🎓 3. Treningsnivåer for ${cfg.label} (LK20)`;
+    const hudGrade = document.getElementById('hudGrade');
+    if (hudGrade) hudGrade.textContent = cfg.label;
 
-    document.getElementById('lvl1Badge').textContent = `${cfg.label} • Nivå 1`;
-    document.getElementById('lvl1Title').textContent = cfg.lvl1Title;
-    document.getElementById('lvl1Desc').textContent = cfg.lvl1Desc;
+    const lk20Desc = document.getElementById('lk20Description');
+    if (lk20Desc) lk20Desc.innerHTML = cfg.lk20Summary;
 
-    document.getElementById('lvl2Badge').textContent = `${cfg.label} • Nivå 2`;
-    document.getElementById('lvl2Title').textContent = cfg.lvl2Title;
-    document.getElementById('lvl2Desc').textContent = cfg.lvl2Desc;
+    const compactPill = document.getElementById('lk20CompactPill');
+    if (compactPill) {
+      compactPill.innerHTML = `<span>🎯 <strong>${cfg.label} aktivt (LK20):</strong> ${cfg.lvl1Title} • ${cfg.lvl2Title} • ${cfg.lvl3Title}</span>`;
+    }
 
-    document.getElementById('lvl3Badge').textContent = `${cfg.label} • Nivå 3`;
-    document.getElementById('lvl3Title').textContent = cfg.lvl3Title;
-    document.getElementById('lvl3Desc').textContent = cfg.lvl3Desc;
+    const compTitle = document.getElementById('compSectionTitle');
+    if (compTitle) compTitle.textContent = `🏆 1. Konkurransemoduser for ${cfg.label}`;
+
+    const btnRush = document.getElementById('btnRushText');
+    if (btnRush) btnRush.textContent = `Start Rush Hour (${cfg.label}) ➔`;
+    const btnSprint = document.getElementById('btnSprintText');
+    if (btnSprint) btnSprint.textContent = `Start 2-Min Duell (${cfg.label}) ➔`;
+
+    const trainingTitle = document.getElementById('trainingSectionTitle');
+    if (trainingTitle) trainingTitle.textContent = `🎓 2. Treningsnivåer for ${cfg.label}`;
+
+    const lvl1B = document.getElementById('lvl1Badge');
+    if (lvl1B) lvl1B.textContent = `${cfg.label} • Nivå 1`;
+    const lvl1T = document.getElementById('lvl1Title');
+    if (lvl1T) lvl1T.textContent = cfg.lvl1Title;
+    const lvl1D = document.getElementById('lvl1Desc');
+    if (lvl1D) lvl1D.textContent = cfg.lvl1Desc;
+
+    const lvl2B = document.getElementById('lvl2Badge');
+    if (lvl2B) lvl2B.textContent = `${cfg.label} • Nivå 2`;
+    const lvl2T = document.getElementById('lvl2Title');
+    if (lvl2T) lvl2T.textContent = cfg.lvl2Title;
+    const lvl2D = document.getElementById('lvl2Desc');
+    if (lvl2D) lvl2D.textContent = cfg.lvl2Desc;
+
+    const lvl3B = document.getElementById('lvl3Badge');
+    if (lvl3B) lvl3B.textContent = `${cfg.label} • Nivå 3`;
+    const lvl3T = document.getElementById('lvl3Title');
+    if (lvl3T) lvl3T.textContent = cfg.lvl3Title;
+    const lvl3D = document.getElementById('lvl3Desc');
+    if (lvl3D) lvl3D.textContent = cfg.lvl3Desc;
 
     renderCounter();
     buildGlossary();
@@ -1750,8 +2886,30 @@
         ? '👨‍🏫 Tavlemodus aktiv – Ingen tidsfrist'
         : '🧘 Rolig modus aktiv – Ingen tidsfrist';
     }
+    const btnXmas = document.getElementById('btnXmas');
+    if (btnXmas) {
+      btnXmas.textContent = state.xmasMode ? '🎄 Jul: PÅ' : '🎄 Jul: AV';
+      btnXmas.classList.toggle('xmas-active', state.xmasMode);
+    }
+
     updateOrderTextVisibility();
     updateTeacherToolbarUI();
+  }
+
+  function toggleXmasMode() {
+    state.xmasMode = !state.xmasMode;
+    localStorage.setItem('londonPubXmasMode', state.xmasMode ? 'true' : 'false');
+    document.body.classList.toggle('xmas-mode', state.xmasMode);
+    syncTopButtonsUI();
+    if (state.xmasMode) {
+      startSnow();
+      setupAwningLights();
+      playTone('xmasJingle');
+      showFeedback('🎄 God jul! Julestemning aktivert med snøfall og julehilsener.', 'success');
+    } else {
+      stopSnow();
+      showFeedback('❄️ Julestemning slått av.', 'info');
+    }
   }
 
   function toggleListeningMode() {
@@ -2006,6 +3164,7 @@
   // --- GENERATE ORDER ADAPTED TO GRADE 6, 7 OR 8 ---
   function nextCustomer() {
     hideFeedback();
+    hideCustomerReaction();
     state.tray = [];
     state.firstTryOnCurrentCustomer = true;
     state.awaitingNextCustomerClick = false;
@@ -2028,6 +3187,14 @@
     } else {
       originBadge.textContent = '🇬🇧 British Local';
       originBadge.className = 'customer-origin origin-uk';
+    }
+
+    // Trigger arrival slide-in animation
+    const avatarBox = document.querySelector('.customer-avatar-box');
+    if (avatarBox) {
+      avatarBox.classList.remove('customer-arrive', 'customer-celebrate', 'customer-confused', 'customer-impatient');
+      void avatarBox.offsetWidth;
+      avatarBox.classList.add('customer-arrive');
     }
 
     const shuffled = [...MENU_ITEMS].sort(() => Math.random() - 0.5);
@@ -2058,11 +3225,17 @@
       }
     });
 
-    const greetings = state.grade === 6
+    let greetings = state.grade === 6
       ? ['Hello!', 'Hi!', 'Good morning!']
       : cust.origin === 'US'
         ? ['Hey there!', 'Hi! Awesome place!']
         : ['Hello there!', 'Good afternoon!', 'Hiya!'];
+
+    if (state.xmasMode && Math.random() < 0.5) {
+      greetings = state.grade === 6
+        ? ['Merry Christmas!', 'Happy Holidays!']
+        : ['Merry Christmas! Cozy pub!', 'Season\'s greetings!', 'Happy holidays! It is chilly outside!'];
+    }
 
     const intros = state.grade === 6
       ? ['Can I have', 'I would like']
@@ -2154,6 +3327,15 @@
 
     state.timerLeft -= 0.25;
     updateTimerBar();
+
+    // Impatient customer animation if time running low (< 25%)
+    if (state.timerLeft <= state.timerMax * 0.25) {
+      const avatarBox = document.querySelector('.customer-avatar-box');
+      if (avatarBox && !avatarBox.classList.contains('customer-impatient')) {
+        avatarBox.classList.add('customer-impatient');
+      }
+    }
+
     if (state.timerLeft <= 0) {
       handleMistake('⏰ Tiden gikk ut! Kunden gikk sin vei.', 'Tidsfrist (for treg ekspedering)', true);
     }
@@ -2375,6 +3557,13 @@
 
     document.getElementById('receiptBox').innerHTML = linesHtml.join('');
 
+    // Setup interactive till drawer state
+    state.currentTillTarget = targetAmount;
+    state.currentTillTotal = total;
+    state.currentTillIsChange = askForChange;
+    clearCashDrawer();
+    setTillInputMode(state.tillInputMode || 'buttons');
+
     const options = new Set([targetAmount]);
     const deltas = state.grade === 6
       ? [-3, -2, -1, 1, 2, 3, 4]
@@ -2414,7 +3603,8 @@
       const tipPoints = speedBonus * 10 + listenBonus;
 
       state.score += basePoints + tipPoints;
-      state.pounds += orderTotal + (state.firstTryOnCurrentCustomer ? 1 : 0);
+      const earnedPounds = orderTotal + (state.firstTryOnCurrentCustomer ? 1 : 0);
+      state.pounds += earnedPounds;
       state.customersServed += 1;
 
       if (state.firstTryOnCurrentCustomer) {
@@ -2424,15 +3614,33 @@
 
       updateHUD();
 
+      // Customer celebrate reaction and tag!
+      const cheerWordsStandard = ['“Lovely!” 🤩', '“Splendid!” ✨', '“Brilliant!” 🇬🇧', '“Cheers mate!” 👏', '“Spot on!” 🎯'];
+      const cheerWordsXmas = ['“Merry Christmas!” 🎄', '“Lovely holiday cheer!” ❄️', '“Splendid!” ✨', '“Happy Holidays!” 🎅', '“Spot on!” 🎯'];
+      const cheerList = state.xmasMode ? cheerWordsXmas : cheerWordsStandard;
+      const cheer = cheerList[Math.floor(Math.random() * cheerList.length)];
+      showCustomerReaction(cheer, true);
+
+      if (state.xmasMode) {
+        setTimeout(() => playTone('xmasJingle'), 200);
+      }
+
+      const avatarBox = document.querySelector('.customer-avatar-box');
+      if (avatarBox) {
+        avatarBox.classList.remove('customer-arrive', 'customer-celebrate', 'customer-confused', 'customer-impatient');
+        void avatarBox.offsetWidth;
+        avatarBox.classList.add('customer-celebrate');
+      }
+
       if (state.whiteboardMode || state.calmMode) {
         state.awaitingNextCustomerClick = true;
         showFeedback(
-          `🎉 Spot on! “${chosenWords}” (${formatGBP(correctTarget)}) er helt riktig!`,
+          `🎉 Spot on! “${chosenWords}” (${formatGBP(correctTarget)}) er helt riktig! (+${formatGBP(earnedPounds)})`,
           'success',
           true
         );
       } else {
-        showFeedback(`🎉 Brilliant! “Cheers!” (+${basePoints + tipPoints} pts)`, 'success', false);
+        showFeedback(`🎉 Brilliant! “Cheers!” (+${basePoints + tipPoints} pts • +${formatGBP(earnedPounds)})`, 'success', false);
         setTimeout(() => nextCustomer(), 950);
       }
     } else {
@@ -2452,6 +3660,18 @@
     state.streak = 1;
     if (logEntry && !state.mistakeLog.includes(logEntry)) {
       state.mistakeLog.push(logEntry);
+    }
+
+    // Customer confusion reaction tag and animation
+    const oopsWords = ['“Wait, that\'s not right...” 🤨', '“Oh dear!” 🤦‍♂️', '“Excuse me?” 🤔', '“Blimey!” 🧐'];
+    const oops = oopsWords[Math.floor(Math.random() * oopsWords.length)];
+    showCustomerReaction(oops, false);
+
+    const avatarBox = document.querySelector('.customer-avatar-box');
+    if (avatarBox) {
+      avatarBox.classList.remove('customer-arrive', 'customer-celebrate', 'customer-confused', 'customer-impatient');
+      void avatarBox.offsetWidth;
+      avatarBox.classList.add('customer-confused');
     }
 
     if (state.mode === 'rush' && !state.whiteboardMode && !state.calmMode) {
